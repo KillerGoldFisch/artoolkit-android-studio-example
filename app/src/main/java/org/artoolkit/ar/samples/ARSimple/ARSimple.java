@@ -105,6 +105,7 @@ public class ARSimple extends ARActivity {
             }
 
         });
+		Test.x(this, "Hallo Welt");
 	}
 
 	/**

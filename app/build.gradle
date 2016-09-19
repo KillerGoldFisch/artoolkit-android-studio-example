@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.xtext.android.xtend'
 
 android {
     compileSdkVersion 23
@@ -17,9 +18,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/ECLIPSE_.RSA'
+        exclude 'META-INF/ECLIPSE_.SF'
+    }
 }
 
 dependencies {
+    compile ('com.github.tobykurien:xtendroid:0.13') {
+        // optimise dependency tree
+        exclude module: 'support-v4'
+        exclude module: 'appcompat-v7'
+        exclude module: 'gson'
+    }
+
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
